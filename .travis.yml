@@ -1,4 +1,13 @@
+sudo: false
 language: cpp
+cache:
+  directories:
+    - experiments/mpich
+
+before_install:
+  - cd experiments
+  - sh ./build_mpich.sh
+  - cd ..
 
 script:
   - cd experiments
