@@ -12,6 +12,7 @@
 ------------------------------------------------------------------------- */
 
 #include "lammps.h"
+#include "profiling.h"
 #include <mpi.h>
 #include "input.h"
 
@@ -33,9 +34,31 @@ using namespace LAMMPS_NS;
    main program to drive LAMMPS
 ------------------------------------------------------------------------- */
 
+double getCurrSecond() {
+    struct timeval tp;
+    struct timezone tzp;
+    gettimeofday(&tp,&tzp);
+    return ((double) tp.tv_sec + (double) tp.tv_usec * 1.e-6 );
+}
+
+int maxPI;
+int PICount;
+double initTimeStamp;
+double parEndTimeStamp;
+double elapsedParIterTime;
+double parInitTimeStamp;
+
 int main(int argc, char **argv)
 {
   MPI_Init(&argc,&argv);
+  /*
+    The timestamps are as follow:
+       * initTimeStamp    --- just after the main() starts
+       * parInitTimeStamp --- just before the first PI begins
+       * parEndTimeStamp  --- just after the last PI finishes
+       * finishTimeStamp  --- just before the program exit
+  */
+  initTimeStamp = getCurrSecond();
 
 // enable trapping selected floating point exceptions.
 // this uses GNU extensions and is only tested on Linux
@@ -77,4 +100,11 @@ int main(int argc, char **argv)
   fftw_cleanup();
 #endif
 #endif
+  double finishTimeStamp = getCurrSecond();
+  printf("[MO833] PI avg,%f,%d\n",
+        (elapsedParIterTime/PICount), PICount);
+  double elapsedInit   = parInitTimeStamp-initTimeStamp;
+  double elapsedFinish = finishTimeStamp-parEndTimeStamp;
+  printf("[MO833] Beta,%f\n", ((elapsedInit + elapsedFinish)/elapsedParIterTime));
+  printf("[MO833] Total time,%f\n", finishTimeStamp-initTimeStamp);
 }

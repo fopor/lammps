@@ -31,6 +31,8 @@
 #include "timer.h"
 #include "error.h"
 
+#include "profiling.h"
+
 using namespace LAMMPS_NS;
 
 /* ---------------------------------------------------------------------- */
@@ -234,7 +236,19 @@ void Verlet::run(int n)
   if (atom->sortfreq > 0) sortflag = 1;
   else sortflag = 0;
 
+  /* The loop bellow is the indentified paramount itearation */
+  PICount = 0;
+  parInitTimeStamp = getCurrSecond();
+
   for (int i = 0; i < n; i++) {
+    double currIterInitTS = getCurrSecond();
+
+    // check paramount interation limit
+    if (maxPI != -1 && PICount >= maxPI) {
+      MPI_Finalize();
+      exit(0);
+    }
+
     if (timer->check_timeout(i)) {
       update->nsteps = i;
       break;
@@ -347,7 +361,18 @@ void Verlet::run(int n)
       output->write(ntimestep);
       timer->stamp(Timer::OUTPUT);
     }
+
+    // info about current paramount iteration
+    PICount++;
+    double currIterFinishTS = getCurrSecond();
+    printf("[MO833] Paramount Iteration,%d,%f,%f\n",
+          PICount,
+          (currIterFinishTS-currIterInitTS),
+          (currIterFinishTS-initTimeStamp));
   }
+
+  parEndTimeStamp = getCurrSecond();
+  elapsedParIterTime = parEndTimeStamp-parInitTimeStamp;
 }
 
 /* ---------------------------------------------------------------------- */
