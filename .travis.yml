@@ -1,0 +1,5 @@
+language: cpp
+
+script:
+  - cd experiments
+  - ./setup.sh
