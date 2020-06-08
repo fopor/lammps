@@ -58,6 +58,8 @@
 #include "lmpinstalledpkgs.h"
 #include "lmpgitversion.h"
 
+#include "profiling.h"
+
 static void print_style(FILE *fp, const char *str, int &pos);
 
 struct LAMMPS_NS::package_styles_lists {
@@ -154,6 +156,10 @@ LAMMPS::LAMMPS(int narg, char **arg, MPI_Comm communicator) :
   int restartremap = 0;
   int citeflag = 1;
   int helpflag = 0;
+  int maxpiflag = 0;
+
+  //defined externaly
+  maxPI = -1;
 
   suffix = suffix2 = NULL;
   suffix_enable = 0;
@@ -171,7 +177,6 @@ LAMMPS::LAMMPS(int narg, char **arg, MPI_Comm communicator) :
 
   iarg = 1;
   while (iarg < narg) {
-
     if (strcmp(arg[iarg],"-echo") == 0 ||
                strcmp(arg[iarg],"-e") == 0) {
       if (iarg+2 > narg)
@@ -185,6 +190,15 @@ LAMMPS::LAMMPS(int narg, char **arg, MPI_Comm communicator) :
       helpflag = 1;
       citeflag = 0;
       iarg += 1;
+    } else if (strcmp(arg[iarg],"-max-pi") == 0){
+      if (iarg+2 > narg)
+        error->universe_all(FLERR,"Invalid command-line argument");
+
+      maxPI = atoi(arg[iarg+1]);
+      if (maxPI < 0)
+        error->universe_all(FLERR,"Invalid command-line argument");
+      maxpiflag = 1;
+      iarg += 2;
 
     } else if (strcmp(arg[iarg],"-in") == 0 ||
                strcmp(arg[iarg],"-i") == 0) {
