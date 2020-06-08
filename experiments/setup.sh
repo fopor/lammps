@@ -30,7 +30,7 @@ build_folder=$('pwd')
 
 cd $build_folder
 echo "Building LAMMPS..."
-cmake ../cmake/ -DBUILD_MPI=on -DPKG_BODY=on -DPKG_MOLECULE=on -DPKG_GRANULAR=on -DBUILD_OMP=on -DPKG_RIGID=on -DPKG_DIPOLE=on -DPKG_USER-MISC=on -DPKG_USER-EFF=on -DPKG_USER-MEAMC=on -DPKG_USER-REAXC=on -DFFT=KISS -DPKG_KSPACE=on
+cmake ../cmake/ -DBUILD_MPI=on -DMPI_C_COMPILER=$experiments_folder/mpich/bin/mpicxx -DMPI_CXX_COMPILER=$experiments_folder/mpich/bin/mpicxx -DPKG_BODY=on -DPKG_MOLECULE=on -DPKG_GRANULAR=on -DBUILD_OMP=on -DPKG_RIGID=on -DPKG_DIPOLE=on -DPKG_USER-MISC=on -DPKG_USER-EFF=on -DPKG_USER-MEAMC=on -DPKG_USER-REAXC=on -DFFT=KISS -DPKG_KSPACE=on
 #cmake ../cmake/ -DBUILD_MPI=on -DPKG_BODY=on -DPKG_MOLECULE=on -DPKG_GRANULAR=on -DBUILD_OMP=on -DPKG_RIGID=on -DPKG_DIPOLE=on -DPKG_USER-MISC=on -DPKG_USER-EFF=on -DPKG_USER-MEAMC=on -DPKG_USER-REAXC=on -DFFT=FFTW3 -DPKG_KSPACE=on
 
 make -j
