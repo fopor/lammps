@@ -20,17 +20,18 @@ echo "CD to build folder..."
 cd ../build/
 build_folder=$('pwd')
 
-#echo "Installing fftw lib..."
-#wget ftp://ftp.fftw.org/pub/fftw/fftw-3.3.8.tar.gz
-#tar -xf fftw-3.3.8.tar.gz
-#cd fftw-3.3.8
-#./configure
-#make -j
-#make install
+echo "Installing fftw lib..."
+wget ftp://ftp.fftw.org/pub/fftw/fftw-3.3.8.tar.gz
+tar -xf fftw-3.3.8.tar.gz
+cd fftw-3.3.8
+./configure
+make -j
+make install
 
 cd $build_folder
 echo "Building LAMMPS..."
-cmake ../cmake/ -DBUILD_MPI=on -DPKG_BODY=on -DPKG_MOLECULE=on -DPKG_GRANULAR=on -DBUILD_OMP=on -DPKG_RIGID=on -DPKG_DIPOLE=on -DPKG_USER-MISC=on -DPKG_USER-EFF=on -DPKG_USER-MEAMC=on -DPKG_USER-REAXC=on -DFFT=KISS -DPKG_KSPACE=on
+#cmake ../cmake/ -DBUILD_MPI=on -DPKG_BODY=on -DPKG_MOLECULE=on -DPKG_GRANULAR=on -DBUILD_OMP=on -DPKG_RIGID=on -DPKG_DIPOLE=on -DPKG_USER-MISC=on -DPKG_USER-EFF=on -DPKG_USER-MEAMC=on -DPKG_USER-REAXC=on -DFFT=KISS -DPKG_KSPACE=on
+cmake ../cmake/ -DBUILD_MPI=on -DPKG_BODY=on -DPKG_MOLECULE=on -DPKG_GRANULAR=on -DBUILD_OMP=on -DPKG_RIGID=on -DPKG_DIPOLE=on -DPKG_USER-MISC=on -DPKG_USER-EFF=on -DPKG_USER-MEAMC=on -DPKG_USER-REAXC=on -DFFT=FFTW3 -DPKG_KSPACE=on
 
 make -j
 

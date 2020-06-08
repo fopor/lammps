@@ -1,8 +1,8 @@
 # FENE beadspring benchmark
 
-variable	x index 1
-variable	y index 1
-variable	z index 1
+variable	x index 4
+variable	y index 4
+variable	z index 4
 
 units		lj
 atom_style	bond

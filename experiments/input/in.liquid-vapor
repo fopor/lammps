@@ -3,8 +3,8 @@
 
 units real
 atom_style full
-read_data data.singleFOO
-include forcefield.FOO
+read_data data.singleTIP4P-2005
+include forcefield.TIP4P-2005
 pair_modify tail no
 
 replicate 20 20 20
