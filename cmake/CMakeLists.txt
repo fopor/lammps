@@ -522,6 +522,7 @@ if(BUILD_LIB)
     add_dependencies(lammps ${LAMMPS_DEPS})
   endif()
   set(LAMMPS_CXX_HEADERS
+    ${LAMMPS_SOURCE_DIR}/profiling.h
     ${LAMMPS_SOURCE_DIR}/angle.h
     ${LAMMPS_SOURCE_DIR}/atom.h
     ${LAMMPS_SOURCE_DIR}/bond.h
