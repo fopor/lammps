@@ -14,4 +14,10 @@ before_install:
 script:
   - cd experiments
   - ./setup.sh
-
+  - cd ../build
+  - mpirun -np 1 ./lmp -in in.rhodo.dummy
+  - mpirun -np 1 ./lmp -in in.rhodo.dummy  -max-pi 11
+  - mpirun -np 1 ./lmp -in in.rhodo.dummy  -max-pi 0
+  - mpirun -np 1 ./lmp -in in.liquid-vapor -max-pi 5
+  - mpirun -np 1 ./lmp -in in.chain.scale  -max-pi 1
+  - mpirun -np 1 ./lmp -in in.rhodo.scale  -max-pi 1
