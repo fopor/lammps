@@ -41,6 +41,16 @@ double getCurrSecond() {
     return ((double) tp.tv_sec + (double) tp.tv_usec * 1.e-6 );
 }
 
+void printProfInfo(){
+  double finishTimeStamp = getCurrSecond();
+  printf("[MO833] PI avg,%f,%d\n",
+        (elapsedParIterTime/PICount), PICount);
+  double elapsedInit   = parInitTimeStamp-initTimeStamp;
+  double elapsedFinish = finishTimeStamp-parEndTimeStamp;
+  printf("[MO833] Beta,%f\n", ((elapsedInit + elapsedFinish)/elapsedParIterTime));
+  printf("[MO833] Total time,%f\n", finishTimeStamp-initTimeStamp);
+}
+
 int maxPI;
 int PICount;
 double initTimeStamp;
@@ -100,11 +110,5 @@ int main(int argc, char **argv)
   fftw_cleanup();
 #endif
 #endif
-  double finishTimeStamp = getCurrSecond();
-  printf("[MO833] PI avg,%f,%d\n",
-        (elapsedParIterTime/PICount), PICount);
-  double elapsedInit   = parInitTimeStamp-initTimeStamp;
-  double elapsedFinish = finishTimeStamp-parEndTimeStamp;
-  printf("[MO833] Beta,%f\n", ((elapsedInit + elapsedFinish)/elapsedParIterTime));
-  printf("[MO833] Total time,%f\n", finishTimeStamp-initTimeStamp);
+  printProfInfo();
 }

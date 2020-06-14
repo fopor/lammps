@@ -20,6 +20,7 @@
 #include<sys/time.h>
 
 double getCurrSecond();
+void   printProfInfo();
 extern int maxPI;
 extern int PICount;
 extern double initTimeStamp;
