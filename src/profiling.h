@@ -20,13 +20,17 @@
 #include<sys/time.h>
 
 double getCurrSecond();
+void   stampPIInitTime();
 void   printProfInfo();
+void   stampPI();
+void   stampPIFinish();
 extern int maxPI;
 extern int PICount;
 extern double initTimeStamp;
 extern double elapsedParIterTime;
 extern double parEndTimeStamp;
 extern double parInitTimeStamp;
+extern double refIterTS;
 
 #endif
 

@@ -237,17 +237,9 @@ void Verlet::run(int n)
   else sortflag = 0;
 
   /* The loop bellow is the indentified paramount itearation */
-  PICount = 0;
-  parInitTimeStamp = getCurrSecond();
-
+  stampPIInitTime();
   for (int i = 0; i < n; i++) {
-    double currIterInitTS = getCurrSecond();
-
-    // check paramount interation limit
-    if (maxPI != -1 && PICount >= maxPI) {
-      MPI_Finalize();
-      exit(0);
-    }
+    stampPI();
 
     if (timer->check_timeout(i)) {
       update->nsteps = i;
@@ -361,18 +353,10 @@ void Verlet::run(int n)
       output->write(ntimestep);
       timer->stamp(Timer::OUTPUT);
     }
-
-    // info about current paramount iteration
-    PICount++;
-    double currIterFinishTS = getCurrSecond();
-    printf("[MO833] Paramount Iteration,%d,%f,%f\n",
-          PICount,
-          (currIterFinishTS-currIterInitTS),
-          (currIterFinishTS-initTimeStamp));
   }
-
-  parEndTimeStamp = getCurrSecond();
-  elapsedParIterTime = parEndTimeStamp-parInitTimeStamp;
+  stampPI(); // stamp the last PI
+  // end of the PI loop
+  stampPIFinish();
 }
 
 /* ---------------------------------------------------------------------- */

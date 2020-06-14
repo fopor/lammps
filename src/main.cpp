@@ -41,13 +41,52 @@ double getCurrSecond() {
   return ((double) tp.tv_sec + (double) tp.tv_usec * 1.e-6 );
 }
 
+void stampPIInitTime() {
+  PICount = 0;
+  parInitTimeStamp = getCurrSecond();
+}
+
+void stampPI() {
+    int currIter = PICount + 1;
+    double currIterInitTS = getCurrSecond();
+
+    // if one PI passed
+    if(PICount > 0) {
+      printf("[MO833] Paramount Iteration,%d,%f,%f\n",
+            PICount,
+            (currIterInitTS-refIterTS),
+            (currIterInitTS-initTimeStamp));
+    }
+
+    // check paramount interation limit
+    if (maxPI != -1 && currIter > maxPI) {
+      stampPIFinish();
+      printProfInfo();
+      MPI_Barrier(MPI_COMM_WORLD);
+      MPI_Finalize();
+      exit(0);
+    }
+
+    PICount++;
+    refIterTS = getCurrSecond();
+}
+
+void stampPIFinish() {
+  parEndTimeStamp = getCurrSecond();
+  elapsedParIterTime = parEndTimeStamp-parInitTimeStamp;
+}
+
 void printProfInfo(){
   double finishTimeStamp = getCurrSecond();
-  printf("[MO833] PI avg,%f,%d\n",
-        (elapsedParIterTime/PICount), PICount);
   double elapsedInit   = parInitTimeStamp-initTimeStamp;
   double elapsedFinish = finishTimeStamp-parEndTimeStamp;
-  printf("[MO833] Beta,%f\n", ((elapsedInit + elapsedFinish)/elapsedParIterTime));
+
+  if(PICount > 0) {
+    printf("[MO833] PI avg,%f,%d\n",
+            (elapsedParIterTime/PICount), PICount);
+    printf("[MO833] Beta,%f\n", ((elapsedInit + elapsedFinish)/elapsedParIterTime));
+  }
+
   printf("[MO833] Total time,%f\n", finishTimeStamp-initTimeStamp);
 }
 
@@ -57,6 +96,7 @@ double initTimeStamp;
 double parEndTimeStamp;
 double elapsedParIterTime;
 double parInitTimeStamp;
+double refIterTS;
 
 int main(int argc, char **argv)
 {
