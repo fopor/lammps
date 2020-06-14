@@ -25,6 +25,7 @@ void   printProfInfo();
 void   stampPI();
 void   stampPIFinish();
 extern int maxPI;
+extern int myMPIRank;
 extern int PICount;
 extern double initTimeStamp;
 extern double elapsedParIterTime;

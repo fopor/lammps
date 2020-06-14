@@ -52,7 +52,8 @@ void stampPI() {
 
     // if one PI passed
     if(PICount > 0) {
-      printf("[MO833] Paramount Iteration,%d,%f,%f\n",
+      printf("[MO833] Paramount Iteration,%d,%d,%f,%f\n",
+            myMPIRank,
             PICount,
             (currIterInitTS-refIterTS),
             (currIterInitTS-initTimeStamp));
@@ -82,9 +83,10 @@ void printProfInfo(){
   double elapsedFinish = finishTimeStamp-parEndTimeStamp;
 
   if(PICount > 0) {
-    printf("[MO833] PI avg,%f,%d\n",
+    printf("[MO833] Beta,%d,%f\n", myMPIRank,
+            ((elapsedInit + elapsedFinish)/elapsedParIterTime));
+    printf("[MO833] PI avg,%d,%f,%d\n", myMPIRank,
             (elapsedParIterTime/PICount), PICount);
-    printf("[MO833] Beta,%f\n", ((elapsedInit + elapsedFinish)/elapsedParIterTime));
   }
 
   printf("[MO833] Total time,%f\n", finishTimeStamp-initTimeStamp);
@@ -92,6 +94,7 @@ void printProfInfo(){
 
 int maxPI;
 int PICount;
+int myMPIRank;
 double initTimeStamp;
 double parEndTimeStamp;
 double elapsedParIterTime;
@@ -101,6 +104,7 @@ double refIterTS;
 int main(int argc, char **argv)
 {
   MPI_Init(&argc,&argv);
+
   /*
     The timestamps are as follow:
        * initTimeStamp    --- just after the main() starts
@@ -108,6 +112,7 @@ int main(int argc, char **argv)
        * parEndTimeStamp  --- just after the last PI finishes
        * finishTimeStamp  --- just before the program exit
   */
+  MPI_Comm_rank(MPI_COMM_WORLD, &myMPIRank);
   initTimeStamp = getCurrSecond();
 
 // enable trapping selected floating point exceptions.
