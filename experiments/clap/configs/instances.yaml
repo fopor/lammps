@@ -5,7 +5,6 @@ i-c5.large:
     image_id: ami-085925f297f89fce1
     security_group: rfreitas-mpi-nas
     timeout: 600
-    placement_group: cluster
 
 i-t3.medium:
     provider: aws-config-us-east-1
@@ -14,7 +13,6 @@ i-t3.medium:
     image_id: ami-085925f297f89fce1
     security_group: rfreitas-mpi-nas
     timeout: 600
-    placement_group: cluster
 
 type-a:
     provider: aws-config-us-east-1
@@ -25,7 +23,7 @@ type-a:
        
 type-b:
     provider: aws-config-us-east-1
-    login: login-ubuntu-b
+    login: login-ubuntu
     flavor: t2.medium
     image_id: ami-07d0cf3af28718ef8
     boot_disk_size: 10
@@ -37,13 +35,13 @@ type-b:
     
 paramount-t2.medium:
     provider: aws-config-us-east-1
-    login: login-ubuntu-b
+    login: login-ubuntu
     image_id: ami-0cbe953fb7b8fff02
     flavor: t2.medium
     
 i-c5.large-spot:
     provider: aws-config-us-east-1
-    login: login-ubuntu-b
+    login: login-ubuntu
     image_id: ami-0cbe953fb7b8fff02
     flavor: c5.large
     price: 1.0
@@ -51,7 +49,7 @@ i-c5.large-spot:
     
 i-c5n.large-spot:
     provider: aws-config-us-east-1
-    login: login-ubuntu-b
+    login: login-ubuntu
     image_id: ami-0cbe953fb7b8fff02
     flavor: c5n.large
     price: 1.0
@@ -59,7 +57,7 @@ i-c5n.large-spot:
 
 i-m5n.large-spot:
     provider: aws-config-us-east-1
-    login: login-ubuntu-b
+    login: login-ubuntu
     image_id: ami-0cbe953fb7b8fff02
     flavor: m5n.large
     price: 1.0
@@ -67,7 +65,7 @@ i-m5n.large-spot:
 
 i-r5.large-spot:
     provider: aws-config-us-east-1
-    login: login-ubuntu-b
+    login: login-ubuntu
     image_id: ami-0cbe953fb7b8fff02
     flavor: r5.large
     price: 1.0
@@ -75,7 +73,7 @@ i-r5.large-spot:
     
 i-m5dn.large-spot:
     provider: aws-config-us-east-1
-    login: login-ubuntu-b
+    login: login-ubuntu
     image_id: ami-0cbe953fb7b8fff02
     flavor: m5dn.large
     price: 1.0
@@ -83,7 +81,7 @@ i-m5dn.large-spot:
 
 i-c5.xlarge-spot:
     provider: aws-config-us-east-1
-    login: login-ubuntu-b
+    login: login-ubuntu
     image_id: ami-0cbe953fb7b8fff02
     flavor: c5.xlarge
     price: 1.0
@@ -91,7 +89,7 @@ i-c5.xlarge-spot:
 
 i-c5n.xlarge-spot:
     provider: aws-config-us-east-1
-    login: login-ubuntu-b
+    login: login-ubuntu
     image_id: ami-0cbe953fb7b8fff02
     flavor: c5n.xlarge
     price: 1.0
@@ -99,7 +97,7 @@ i-c5n.xlarge-spot:
 
 i-m5n.xlarge-spot:
     provider: aws-config-us-east-1
-    login: login-ubuntu-b
+    login: login-ubuntu
     image_id: ami-0cbe953fb7b8fff02
     flavor: m5n.xlarge
     price: 1.0
@@ -107,7 +105,7 @@ i-m5n.xlarge-spot:
 
 i-r5.xlarge-spot:
     provider: aws-config-us-east-1
-    login: login-ubuntu-b
+    login: login-ubuntu
     image_id: ami-0cbe953fb7b8fff02
     flavor: r5.xlarge
     price: 1.0
@@ -115,7 +113,7 @@ i-r5.xlarge-spot:
 
 i-m5dn.xlarge-spot:
     provider: aws-config-us-east-1
-    login: login-ubuntu-b
+    login: login-ubuntu
     image_id: ami-0cbe953fb7b8fff02
     flavor: m5dn.xlarge
     price: 1.0
@@ -123,7 +121,7 @@ i-m5dn.xlarge-spot:
     
 i-m5dn.xlarge-spot:
     provider: aws-config-us-east-1
-    login: login-ubuntu-b
+    login: login-ubuntu
     image_id: ami-0cbe953fb7b8fff02
     flavor: m5dn.xlarge
     price: 1.0
@@ -131,7 +129,7 @@ i-m5dn.xlarge-spot:
 
 i-c5.2xlarge-spot:
     provider: aws-config-us-east-1
-    login: login-ubuntu-b
+    login: login-ubuntu
     image_id: ami-0cbe953fb7b8fff02
     flavor: c5.2xlarge
     price: 1.0
@@ -139,7 +137,7 @@ i-c5.2xlarge-spot:
     
 i-c5n.2xlarge-spot:
     provider: aws-config-us-east-1
-    login: login-ubuntu-b
+    login: login-ubuntu
     image_id: ami-0cbe953fb7b8fff02
     flavor: c5n.2xlarge
     price: 1.0
@@ -147,7 +145,7 @@ i-c5n.2xlarge-spot:
 
 i-m5n.2xlarge-spot:
     provider: aws-config-us-east-1
-    login: login-ubuntu-b
+    login: login-ubuntu
     image_id: ami-0cbe953fb7b8fff02
     flavor: m5n.2xlarge
     price: 1.0
@@ -155,7 +153,7 @@ i-m5n.2xlarge-spot:
    
 i-r5.2xlarge-spot:
     provider: aws-config-us-east-1
-    login: login-ubuntu-b
+    login: login-ubuntu
     image_id: ami-0cbe953fb7b8fff02
     flavor: r5.2xlarge
     price: 1.0
@@ -163,7 +161,7 @@ i-r5.2xlarge-spot:
     
 i-m5dn.2xlarge-spot:
     provider: aws-config-us-east-1
-    login: login-ubuntu-b
+    login: login-ubuntu
     image_id: ami-0cbe953fb7b8fff02
     flavor: m5dn.2xlarge
     price: 1.0
@@ -171,7 +169,7 @@ i-m5dn.2xlarge-spot:
     
 i-c5.4xlarge:
     provider: aws-config-us-east-1
-    login: login-ubuntu-b
+    login: login-ubuntu
     image_id: ami-0cbe953fb7b8fff02
     flavor: c5.4xlarge
     price: 1.0
@@ -179,7 +177,7 @@ i-c5.4xlarge:
     
 i-c5n.4xlarge:
     provider: aws-config-us-east-1
-    login: login-ubuntu-b
+    login: login-ubuntu
     image_id: ami-0cbe953fb7b8fff02
     flavor: c5.4xlarge
     price: 1.0
@@ -187,7 +185,7 @@ i-c5n.4xlarge:
 
 i-m5n.4xlarge-spot:
     provider: aws-config-us-east-1
-    login: login-ubuntu-b
+    login: login-ubuntu
     image_id: ami-0cbe953fb7b8fff02
     flavor: m5n.4xlarge
     price: 1.0
@@ -195,7 +193,7 @@ i-m5n.4xlarge-spot:
 
 i-r5.4xlarge-spot:
     provider: aws-config-us-east-1
-    login: login-ubuntu-b
+    login: login-ubuntu
     image_id: ami-0cbe953fb7b8fff02
     flavor: r5.4xlarge
     price: 1.0
@@ -203,7 +201,7 @@ i-r5.4xlarge-spot:
 
 i-m5dn.4xlarge-spot:
     provider: aws-config-us-east-1
-    login: login-ubuntu-b
+    login: login-ubuntu
     image_id: ami-0cbe953fb7b8fff02
     flavor: m5dn.4xlarge
     price: 1.0
@@ -211,7 +209,7 @@ i-m5dn.4xlarge-spot:
 
 i-c5.9xlarge-spot:
     provider: aws-config-us-east-1
-    login: login-ubuntu-b
+    login: login-ubuntu
     image_id: ami-0cbe953fb7b8fff02
     flavor: c5.9xlarge
     price: 1.0
@@ -219,7 +217,7 @@ i-c5.9xlarge-spot:
 
 i-m5n.8xlarge-spot:
     provider: aws-config-us-east-1
-    login: login-ubuntu-b
+    login: login-ubuntu
     image_id: ami-0cbe953fb7b8fff02
     flavor: m5n.8xlarge
     price: 1.0
@@ -227,7 +225,7 @@ i-m5n.8xlarge-spot:
 
 i-c5n.9xlarge-spot:
     provider: aws-config-us-east-1
-    login: login-ubuntu-b
+    login: login-ubuntu
     image_id: ami-0cbe953fb7b8fff02
     flavor: c5n.9xlarge
     price: 1.0
@@ -235,7 +233,7 @@ i-c5n.9xlarge-spot:
 
 i-r5.8xlarge-spot:
     provider: aws-config-us-east-1
-    login: login-ubuntu-b
+    login: login-ubuntu
     image_id: ami-0cbe953fb7b8fff02
     flavor: r5.8xlarge
     price: 1.0
@@ -243,7 +241,7 @@ i-r5.8xlarge-spot:
 
 i-c5.12xlarge-spot:
     provider: aws-config-us-east-1
-    login: login-ubuntu-b
+    login: login-ubuntu
     image_id: ami-0cbe953fb7b8fff02
     flavor: c5.12xlarge
     price: 1.0
@@ -251,7 +249,7 @@ i-c5.12xlarge-spot:
 
 i-m5dn.8xlarge-spot:
     provider: aws-config-us-east-1
-    login: login-ubuntu-b
+    login: login-ubuntu
     image_id: ami-0cbe953fb7b8fff02
     flavor: m5dn.8xlarge
     price: 1.0
@@ -259,7 +257,7 @@ i-m5dn.8xlarge-spot:
 
 i-m5n.12xlarge-spot:
     provider: aws-config-us-east-1
-    login: login-ubuntu-b
+    login: login-ubuntu
     image_id: ami-0cbe953fb7b8fff02
     flavor: m5n.12xlarge
     price: 1.0
@@ -267,7 +265,7 @@ i-m5n.12xlarge-spot:
 
 i-r5.12xlarge-spot:
     provider: aws-config-us-east-1
-    login: login-ubuntu-b
+    login: login-ubuntu
     image_id: ami-0cbe953fb7b8fff02
     flavor: r5.12xlarge
     price: 1.0
@@ -275,7 +273,7 @@ i-r5.12xlarge-spot:
 
 i-c5.18xlarge-spot:
     provider: aws-config-us-east-1
-    login: login-ubuntu-b
+    login: login-ubuntu
     image_id: ami-0cbe953fb7b8fff02
     flavor: c5.18xlarge
     price: 1.0
@@ -283,7 +281,7 @@ i-c5.18xlarge-spot:
 
 i-m5dn.12xlarge-spot:
     provider: aws-config-us-east-1
-    login: login-ubuntu-b
+    login: login-ubuntu
     image_id: ami-0cbe953fb7b8fff02
     flavor: m5dn.12xlarge
     price: 1.0
@@ -291,7 +289,7 @@ i-m5dn.12xlarge-spot:
 
 i-m5n.16xlarge-spot:
     provider: aws-config-us-east-1
-    login: login-ubuntu-b
+    login: login-ubuntu
     image_id: ami-0cbe953fb7b8fff02
     flavor: m5n.16xlarge
     price: 1.0
@@ -299,7 +297,7 @@ i-m5n.16xlarge-spot:
 
 i-c5n.18xlarge-spot:
     provider: aws-config-us-east-1
-    login: login-ubuntu-b
+    login: login-ubuntu
     image_id: ami-0cbe953fb7b8fff02
     flavor: c5n.18xlarge
     price: 1.0
@@ -307,7 +305,7 @@ i-c5n.18xlarge-spot:
 
 i-r5.16xlarge-spot:
     provider: aws-config-us-east-1
-    login: login-ubuntu-b
+    login: login-ubuntu
     image_id: ami-0cbe953fb7b8fff02
     flavor: r5.16xlarge
     price: 1.0
@@ -315,7 +313,7 @@ i-r5.16xlarge-spot:
 
 i-c5.24xlarge-spot:
     provider: aws-config-us-east-1
-    login: login-ubuntu-b
+    login: login-ubuntu
     image_id: ami-0cbe953fb7b8fff02
     flavor: c5.24xlarge
     price: 1.0
@@ -323,7 +321,7 @@ i-c5.24xlarge-spot:
 
 i-m5dn.16xlarge-spot:
     provider: aws-config-us-east-1
-    login: login-ubuntu-b
+    login: login-ubuntu
     image_id: ami-0cbe953fb7b8fff02
     flavor: m5dn.16xlarge
     price: 1.0
@@ -331,7 +329,7 @@ i-m5dn.16xlarge-spot:
 
 i-m5n.24xlarge-spot:
     provider: aws-config-us-east-1
-    login: login-ubuntu-b
+    login: login-ubuntu
     image_id: ami-0cbe953fb7b8fff02
     flavor: m5n.24xlarge
     price: 1.0
@@ -339,7 +337,7 @@ i-m5n.24xlarge-spot:
 
 i-r5.24xlarge-spot:
     provider: aws-config-us-east-1
-    login: login-ubuntu-b
+    login: login-ubuntu
     image_id: ami-0cbe953fb7b8fff02
     flavor: r5.24xlarge
     price: 1.0
@@ -347,7 +345,7 @@ i-r5.24xlarge-spot:
 
 i-m5dn.24xlarge-spot:
     provider: aws-config-us-east-1
-    login: login-ubuntu-b
+    login: login-ubuntu
     image_id: ami-0cbe953fb7b8fff02
     flavor: m5dn.24xlarge
     price: 1.0
