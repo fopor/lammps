@@ -1,0 +1,9 @@
+---
+- hosts: all
+  tasks:
+    - name: Install required packages
+      become: yes
+      apt:
+        name: build-essential, git, wget, cmake
+        update_cache: yes
+        state: present

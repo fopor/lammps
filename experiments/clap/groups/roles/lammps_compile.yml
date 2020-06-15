@@ -1,0 +1,24 @@
+---
+- hosts: all
+  tasks:
+    - name: Git clone LAMMPS
+      become: yes
+      shell: |
+        git clone --single-branch --depth=1 --branch paramount-profiling https://github.com/fopor/lammps.git
+        chmod 777 lammps/ 
+      args:
+        chdir: /efs/
+
+    - name: Build MPICH
+      become: yes
+      shell: |
+        sh build_mpich.sh
+      args:
+        chdir: /efs/lammps/experiments/
+
+    - name: Build LAMMPS
+      become: yes
+      shell: |
+        sh setup.sh 2
+      args:
+        chdir: /efs/lammps/experiments/
