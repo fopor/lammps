@@ -59,17 +59,17 @@ void stampPI() {
             (currIterInitTS-initTimeStamp));
     }
 
-    // check paramount interation limit
-    if (maxPI != -1 && currIter > maxPI) {
-      stampPIFinish();
-      printProfInfo();
-      MPI_Barrier(MPI_COMM_WORLD);
-      MPI_Finalize();
-      exit(0);
-    }
-
     PICount++;
     refIterTS = getCurrSecond();
+
+    // check paramount interation limit
+    if (maxPI != -1 && currIter > maxPI) {
+        stampPIFinish();
+        printProfInfo();
+        MPI_Barrier(MPI_COMM_WORLD);
+        MPI_Finalize();
+        exit(0);
+    }
 }
 
 void stampPIFinish() {
@@ -86,7 +86,7 @@ void printProfInfo(){
     printf("[MO833] Beta,%d,%f\n", myMPIRank,
             ((elapsedInit + elapsedFinish)/elapsedParIterTime));
     printf("[MO833] PI avg,%d,%f,%d\n", myMPIRank,
-            (elapsedParIterTime/PICount), PICount);
+            (elapsedParIterTime/(PICount-1)), (PICount-1));
   }
 
   if(myMPIRank == 0)
