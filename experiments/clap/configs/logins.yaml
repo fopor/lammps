@@ -1,0 +1,8 @@
+login-ubuntu:
+    user: ubuntu
+    keypair_name: mo833_rfreitas
+    keypair_public_file: mo833_rfreitas.pub
+    keypair_private_file: mo833_rfreitas.pem
+    sudo: true
+    sudo_user: root
+

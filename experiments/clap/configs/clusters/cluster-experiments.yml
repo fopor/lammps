@@ -1,0 +1,49 @@
+clusters:
+  cluster-c5.large-2x:
+    nodes:
+      node-type-master:
+        type: i-c5.large
+        count: 1
+        min_count: 1
+
+      node-type-slave-1:
+        type: i-c5.large
+        count: 1
+        min_count: 1
+
+  cluster-t3.medium-2x:
+    nodes:
+      node-type-master:
+        type: i-t3.medium
+        count: 1
+        min_count: 1
+
+      node-type-slave-1:
+        type: i-t3.medium
+        count: 1
+        min_count: 1
+
+  cluster-t3.medium-4x:
+    nodes:
+      node-type-master:
+        type: i-t3.medium
+        count: 1
+        min_count: 1
+
+      node-type-slave-1:
+        type: i-t3.medium
+        count: 3
+        min_count: 3
+
+  cluster-t3.medium-8x:
+    nodes:
+      node-type-master:
+        type: i-t3.medium
+        count: 1
+        min_count: 1
+
+      node-type-slave-1:
+        type: i-t3.medium
+        count: 7
+        min_count: 7
+
