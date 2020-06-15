@@ -89,7 +89,8 @@ void printProfInfo(){
             (elapsedParIterTime/PICount), PICount);
   }
 
-  printf("[MO833] Total time,%f\n", finishTimeStamp-initTimeStamp);
+  if(myMPIRank == 0)
+    printf("[MO833] Total time,%f\n", finishTimeStamp-initTimeStamp);
 }
 
 int maxPI;
