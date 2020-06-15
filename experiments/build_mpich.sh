@@ -24,3 +24,11 @@ else
   cd -
   rm -rf mpich-3.2
 fi
+
+current_dir=$('pwd')
+mpi_dir=$current_dir/mpich
+
+case ":$PATH:" in
+  *:$mpi_dir/bin:*) echo "MPICH bins are in PATH";;
+  *) PATH="$mpi_dir/bin:$PATH";;
+esac
