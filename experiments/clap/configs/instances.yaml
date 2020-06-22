@@ -3,7 +3,7 @@ i-c5.large:
     login: login-ubuntu
     flavor: c5.large
     image_id: ami-085925f297f89fce1
-    security_group: rfreitas-mpi-nas
+    security_group: mpi_mo833_ra176848
     timeout: 600
 
 i-t3.medium:
@@ -11,7 +11,7 @@ i-t3.medium:
     login: login-ubuntu
     flavor: t3.medium
     image_id: ami-085925f297f89fce1
-    security_group: rfreitas-mpi-nas
+    security_group: mpi_mo833_ra176848
     timeout: 600
 
 type-a:
