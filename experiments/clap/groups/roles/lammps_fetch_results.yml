@@ -1,0 +1,6 @@
+---
+- hosts: all[0]
+  tasks:
+    - name: Fetch experimental results saved on the EFS
+      become: yes
+      synchronize:  src=/efs/experimental_results/ dest={{ destfolder }}/experimental_results mode=pull

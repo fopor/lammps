@@ -1,0 +1,62 @@
+---
+- name: SSH key generation on head node and fetch key
+  hosts: all[0]
+  gather_facts: yes
+  tasks:
+  - name: Generate SSH key
+    openssh_keypair:
+      path: "/home/{{ ansible_user }}/.ssh/id_rsa"
+  - name: Fetch keys
+    fetch:
+      src: "/home/{{ ansible_user }}/.ssh/{{ item }}"
+      dest: /tmp/ansible_files/
+      flat: yes
+    with_items:
+      - id_rsa
+      - id_rsa.pub
+
+
+- name: SSH key copy to other hosts
+  hosts: all
+  gather_facts: yes
+  tasks:
+  - name: Copy keys to remotes
+    copy:
+      src: "/tmp/ansible_files/{{ item }}"
+      dest: "/home/{{ ansible_user }}/.ssh/"
+      mode: '0400'
+    with_items:
+      - id_rsa
+      - id_rsa.pub
+  - name: Add SSH key on remote
+    authorized_key:
+      user: "{{ ansible_user }}"
+      key: "{{ lookup('file', '/tmp/ansible_files/id_rsa.pub') }}"
+  - name: Remove old known hosts
+    file:
+      path: "/home/{{ ansible_user }}/.ssh/known_hosts"
+      state: absent
+  - name: Add all servers to known hosts file
+    shell: "ssh-keyscan -H {{ hostvars[item]['ansible_env'].SSH_CONNECTION.split(' ')[2] }} >> .ssh/known_hosts"
+    args:
+      chdir: "/home/{{ ansible_user }}"
+    loop: "{{ groups['all'] }}"
+
+
+- name: Build hosts file
+  hosts: all
+  gather_facts: yes
+  tasks:
+  - name: Remove hosts file
+    file:
+      path: "/home/{{ ansible_user }}/hosts"
+      state: absent
+  - name: Create hosts file
+    file:
+      path: "/home/{{ ansible_user }}/hosts"
+      state: touch
+  - name: Add Ansible inventory mappings to ~/hosts
+    lineinfile:
+      line: "{{ hostvars[item]['ansible_env'].SSH_CONNECTION.split(' ')[2] }}:2"
+      dest: "/home/{{ ansible_user }}/hosts"
+    loop: "{{ groups['all'] }}"

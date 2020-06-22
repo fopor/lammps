@@ -1,0 +1,22 @@
+
+---
+
+- name: "Create MPI-ready AWS security group"
+  hosts: localhost 
+  gather_facts: false
+  tasks:
+    - name: "Create security group in ec2 us-east-1"
+      efs:
+        aws_secret_key: "{{lookup('file', '~/.clap/private/mo833_acess.pem') }}"
+        aws_access_key: "{{lookup('file', '~/.clap/private/mo833_acess.pub') }}"
+        region: "us-east-1"
+        name: efs_mo833_ra176848
+        id: efs_mo833_ra176848
+        state: "present"
+        tags:
+            Name: efs_mo833_ra176848
+      register: "aws_setup_vars"
+
+    - name: "Print creation results dictionary"
+      debug:
+        msg: "EFSADDR={{ aws_setup_vars.efs.filesystem_address }}"

@@ -1,0 +1,32 @@
+
+---
+
+- name: "Create MPI-ready AWS security group"
+  hosts: localhost 
+  gather_facts: false
+  tasks:
+  - name: "Create security group in ec2 us-east-1"
+    ec2_group:
+      aws_secret_key: "{{lookup('file', '~/.clap/private/mo833_acess.pem') }}"
+      aws_access_key: "{{lookup('file', '~/.clap/private/mo833_acess.pub') }}"
+      region: "us-east-1"
+      name: "mpi_mo833_ra176848"
+      description: "An example EC2 group"
+      state: "present"
+      rules:
+      - proto: tcp
+        from_port: 22
+        to_port: 22
+        cidr_ip: 0.0.0.0/0
+      - proto: all
+        group_name: mpi_mo833_ra176848
+    register: "aws_setup_vars"
+    
+  - name: "Print creation results dictionary"
+    debug:
+      msg: "vpc={{ aws_setup_vars.vpc_id }}"
+    
+  - name: "Print creation results dictionary"
+    debug:
+      msg: "group={{ aws_setup_vars.group_id }}"
+
