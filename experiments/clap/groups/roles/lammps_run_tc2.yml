@@ -10,7 +10,7 @@
       export curr_date=$(date -Iminutes)
       export experiment_dir="/efs/experimental_results/$test_case/$cluster_cfg/$curr_date"
       mkdir -p $experiment_dir
-      { time /efs/lammps/experiments/mpich/bin/mpirun -hostfile ~/hosts /efs/lammps/build/lmp -in /efs/lammps/build/in.rhodo.scaled  > $experiment_dir/lmp.out 2>&1; } > $experiment_dir/time.out 2>&1
+      /usr/bin/time -f "%e" -o $experiment_dir/time.out /efs/lammps/experiments/mpich/bin/mpirun -hostfile ~/hosts /efs/lammps/build/lmp -in /efs/lammps/build/in.rhodo.scaled  > $experiment_dir/lmp.out 2>&1
       
 
     args:

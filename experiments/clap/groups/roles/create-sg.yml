@@ -1,9 +1,7 @@
-
 ---
-
 - name: "Create MPI-ready AWS security group"
   hosts: localhost 
-  gather_facts: false
+  gather_facts: true
   tasks:
   - name: "Create security group in ec2 us-east-1"
     ec2_group:
@@ -29,4 +27,5 @@
   - name: "Print creation results dictionary"
     debug:
       msg: "group={{ aws_setup_vars.group_id }}"
+
 

@@ -6,6 +6,7 @@
       shell: |
         git clone --single-branch --depth=1 --branch paramount-profiling https://github.com/fopor/lammps.git
         chmod 777 lammps/ 
+        chown -R ubuntu lammps/
       args:
         chdir: /efs/
 

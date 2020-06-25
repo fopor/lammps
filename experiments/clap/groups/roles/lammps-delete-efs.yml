@@ -1,0 +1,12 @@
+---
+- name: "Delete EFS"
+  hosts: localhost 
+  gather_facts: true
+  tasks:
+    - name: "Delete EFS in ec2 us-east-1"
+      efs:
+        aws_secret_key: "{{lookup('file', '~/.clap/private/mo833_acess.pem') }}"
+        aws_access_key: "{{lookup('file', '~/.clap/private/mo833_acess.pub') }}"
+        region: "us-east-1"
+        name: efs_mo833_ra176848
+        state: "absent"
