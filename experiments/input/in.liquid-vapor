@@ -29,7 +29,7 @@ variable zLoNew equal -2.0*lz
 variable zHiNew equal 2.0*lz
 change_box all z final ${zLoNew} ${zHiNew} units box
 
-variable Nblock equal 1000
+variable Nblock equal 50
 variable Nrun equal 2.0*${Nblock}
 variable Ndump equal ${Nrun}/2
 variable Ne equal 10
