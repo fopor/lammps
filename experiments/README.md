@@ -1,6 +1,10 @@
 # Running the experiment
 This file describes how to use the CLAP and Ansible scripts present on the folder ./clap to run the experiment.
 
+## Installing CLAP
+The step-by-step described below uses Ansible and CLAP to instantiate virutal machines on the AWS. Before proceeding, you should perform this [instalation](https://github.com/lmcad-unicamp/CLAP).
+
+
 ## Configuring credentials
 The procedure described below assumes that the following keys are on the corresponding place:
 
@@ -108,5 +112,7 @@ After running the experiment, you can download the data to your local machine:
 You can run the command below if you do not intend to run more experiments. This will destroy the EFS, avoiding undesirable costs.
 
 `$ ansible-playbook ~/.clap/groups/roles/delete-efs.yml`
+
+## Generating the charts
 
 Since the experimental data was fetched to your computer, you can now generate some informative charts using the Jupyter Notebook present in this folder: ExperimentResultParser.ipynb. Simply open it using Python 3 and run its cells. You may have to install [Jupyter](https://jupyter.org/install).
