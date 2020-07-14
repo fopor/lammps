@@ -23,3 +23,6 @@
         sh setup.sh 2
       args:
         chdir: /efs/lammps/experiments/
+
+    - name: Ensure builder folders are 0755s
+      command: find /efs/lammps/build -type d -exec chmod 0755 {} \;
