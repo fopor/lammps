@@ -107,7 +107,11 @@ After running the experiment, you can download the data to your local machine:
 
 `$ clapp group action lammps fetch-results --extra "destfolder=`pwd`"`
 
-5. Delete the EFS
+5. Stop the cluster
+
+`$ clapp stop cluster-1`
+
+6. Delete the EFS
 
 You can run the command below if you do not intend to run more experiments. This will destroy the EFS, avoiding undesirable costs.
 
