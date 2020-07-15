@@ -1,0 +1,23 @@
+---
+actions:
+  setup:
+    playbook: roles/lammps_setup.yml
+    description: Install packages required by LAMMPS
+  compile:
+    playbook: roles/lammps_compile.yml
+    description: Compling MPICH and LAMMPS
+  setup-mpi:
+    playbook: roles/lammps_set_mpi.yml
+    description: Exchange SSH-key across cluster
+  run-tc-1:
+    playbook: roles/lammps_run_tc1.yml
+    description: Run Test Case 1
+  run-tc-2:
+    playbook: roles/lammps_run_tc2.yml
+    description: Run Test Case 2
+  run-tc-3:
+    playbook: roles/lammps_run_tc3.yml
+    description: Run Test Case 3
+  fetch-results:
+    playbook: roles/lammps_fetch_results.yml
+    description: Download experiments results
