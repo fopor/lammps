@@ -6,7 +6,7 @@ The step-by-step described below uses Ansible and CLAP to instantiate virutal ma
 
 
 ## Configuring credentials
-The procedure described below assumes that the following keys are on the corresponding place:
+The procedure described below assumes that the following keys are on the corresponding place (i.e. put your AWS Secret key on the text file `~/.clap/private/mo833_acess.pem`, as the following table describes):
 
 |           Key          |            File location           |
 |:----------------------:|:----------------------------------:|
