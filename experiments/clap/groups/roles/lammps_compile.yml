@@ -27,7 +27,7 @@
     - name: Set permission on build foler
       become: yes
       shell: |
-        chmod 777 *
+        chmod 7777 *
 
       args:
         chdir: "/efs/lammps/build/"
