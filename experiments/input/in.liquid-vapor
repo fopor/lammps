@@ -93,9 +93,6 @@ compute A all chunk/atom bin/1d z center ${Dz} units box
 compute	charges all property/atom q
 fix qDens all ave/chunk ${Ne} ${Nr} ${Nf} A c_charges file qDens.zProfile 
 
-dump trj all atom ${Ndump} wat.lammpstrj
-dump_modify trj scale no sort id
-
 run ${Nrun}
 
 #write_restart restart.wat
