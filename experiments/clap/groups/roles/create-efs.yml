@@ -1,6 +1,6 @@
 ---
 - name: "Create EFS"
-  hosts: localhost 
+  hosts: localhost
   gather_facts: true
   tasks:
     - name: "Create EFS in ec2 us-east-1"
@@ -8,11 +8,11 @@
         aws_secret_key: "{{lookup('file', '~/.clap/private/mo833_acess.pem') }}"
         aws_access_key: "{{lookup('file', '~/.clap/private/mo833_acess.pub') }}"
         region: "us-east-1"
-        name: efs_mo833_ra176848
-        id: efs_mo833_ra176848
+        name: "{{ aws_efs_name }}"
+        id: "{{ aws_efs_name }}"
         state: "present"
         tags:
-            Name: efs_mo833_ra176848
+            Name: "{{ aws_efs_name }}"
         targets:
         - subnet_id: subnet-bbe700dc
           security_groups: [ "{{ aws_sg_id }}" ]
