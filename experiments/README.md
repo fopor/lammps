@@ -144,7 +144,7 @@ $ clapp group action lammps fetch-results --extra "destfolder=`pwd`"
 5. Stop the cluster
 
 ```
-$ clapp stop cluster-1
+$ clapp cluster stop cluster-1
 ```
 
 6. Delete the EFS
