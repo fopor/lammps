@@ -15,6 +15,8 @@ The procedure described below assumes that the following keys are on the corresp
 | AWS Key Pair (private) | ~/.clap/private/mo833_rfreitas.pem |
 |  AWS Key Pair (public) | ~/.clap/private/mo833_rfreitas.pub |
 
+After setting the keys, copy the contents of the folder `clap` present in this directory to `~/.clap/`.
+
 ## Compiling LAMMPS on an EFS
 To avoid having to compile the application before each test, we will use a c5.large machine to quickly build LAMMPS on an EFS and then use this disk on the following runs. The procedure is described below.
 
